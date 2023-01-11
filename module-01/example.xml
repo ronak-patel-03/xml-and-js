@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<info>
-  <about_me>
-    <name> Ronak Patel</name>
-  </about_me>
-  <pro_knowledge>
-    <lang>c++</lang>
-    <lang>JAVA</lang>
-    <lang>HTML/CSS</lang>
-  </pro_knowledge>
-</info>
+<myMessage>
+  <subject>This is a welcome message</subject>
+  <date>Jan 31, 2018</date>
+</myMessage>
