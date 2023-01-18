@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<info>
+    <person1>
+        <name type="first_name">Rorie</name>
+        <name type="last_name">Demanche</name>
+        <con_info>
+            <contact type="home"> 1 710 153 4949</contact>
+            <contact type="work"> 1 503 319 3558</contact>
+           <contact type="mobile"> 1 182 748 1667</contact>
+            <email>rdemanche0@foxnews.com</contact>
+        </con_info>
+    </person1>
+    
+    <person2>
+        <name type="first_name">Kelcey</name>
+        <name type="last_name">Surman</name>
+        <con_info>
+            <contact type="home"> 1 249 926 7376</contact>
+           <contact type="work"> 1 208 363 6588</contact>
+            <contact type="mobile"> 1 982 536 6860</contact>
+            <contact type="email"> ksurman1@usnews.com</contact>
+        </con_info>
+    </person2>
+    <person3>
+        <name type="first_name">Simon</name>
+        <name type="last_name"> Heddan</name>
+        <con_info>
+           <contact type="home"> 1 687 808 4290</contact>
+           <contact type="work"> 1 604 815 7810 </contact>
+           <contact type="mobile"> 1 924 174 3271</contact>
+           <contact type="email">sheddan2@alexa.com</contact>
+        </con_info>
+    </person3>
+    <person4>
+        <name type="first_name">Chan</name>
+        <name type="last_name">Supple</name>
+        <con_info>
+            <contact type="home"> 1 577 165 2495</contact>
+           <contact type="work"> 1 547 934 7337</contact>
+           <contact type="mobile"> 1 367 667 0747 </contact>
+           <contact type="email">csupple3@123-reg.co.uk</contact>
+        </con_info>
+    </person4>
+</info>
