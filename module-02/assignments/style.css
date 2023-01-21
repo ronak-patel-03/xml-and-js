@@ -1,0 +1,17 @@
+originalName{
+    font-size: 25px;
+    text-align: center;
+    background-color: aquamarine;
+    font-weight: bold;
+}
+category{
+    display: block;
+    font-weight: italic;
+}
+summary description{
+    color: lightyellow;
+}
+oldName{
+    font-weight: bold;
+    color: aliceblue;
+}
