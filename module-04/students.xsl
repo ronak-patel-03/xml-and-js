@@ -21,7 +21,7 @@ tell processor to process the entire document with this template.
         <h2>Students</h2> 
 				
         <table border="1"> 
-          <tr bgcolor="#9acd32"> 
+          <tr bgcolor="orange"> 
             <th>Roll No</th> 
             <th>First Name</th> 
             <th>Last Name</th> 
@@ -34,7 +34,7 @@ tell processor to process the entire document with this template.
           --> 
           <xsl:for-each select="class/student"> 
             <tr> 
-              <td> 
+              <td bgcolor="green"> 
                 <!-- value-of processing instruction 
                   process the value of the element matching the XPath expression 
                 --> 
@@ -47,6 +47,7 @@ tell processor to process the entire document with this template.
 						</tr> 
           </xsl:for-each> 
         </table> 
+        <a href="https://www.freeformatter.com/xpath-tester.html#before-output">code validator</a>
       </body> 
     </html> 
   </xsl:template>  
