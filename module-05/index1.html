@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="text"></p>
+    <script>
+        const xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function(){
+            if(this.readyState === 4 && this.status === 200)
+            {
+                displayData(this.responseXML);
+            }
+        };
+        xhr.open("GET","customers.xml", true)
+        xhr.send();
+
+        const displayData = (XMLDoc) => {
+            document.getElementById('text').innerHTML =
+                xmlDoc.getElementsByTagName("name")[0].childNodes[0].nodeValue;
+
+            document.getElementById('text').innerHTML =
+                xmlDoc.getElementsByTagName("name")[0].attributes[0].nodeValue;
+        }
+    </script>
+</body>
+</html>

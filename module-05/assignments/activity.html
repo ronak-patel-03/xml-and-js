@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--Ronak Patel
+    n01542238-->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            border: 2px solid;
+            background-color: antiquewhite;
+        }
+        tr,td{
+            border: 1px solid;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <table id="people"></table>
+    <script>
+        const xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () 
+        {
+            if (this.readyState == 4 && this.status == 200) {
+                displayData(this.responseXML);
+            }
+        };
+        xhttp.open("GET", "people.xml", true);
+        xhttp.send();
+
+        function stringToNode(html)
+        {
+            const template = document.createElement(`template`);
+            html = html.trim();
+            template.innerHTML = html;
+            return template.content.firstChild;
+        }
+
+        function parsePeople(xml)
+        {
+            const first_name = xml.getElementsByTagName(`first_name`)[0].childNodes[0].nodeValue;
+            const last_name = xml.getElementsByTagName(`last_name`)[0].childNodes[0].nodeValue;
+            const email = xml.getElementsByTagName(`email`)[0].childNodes[0].nodeValue;
+            const balance = xml.getElementsByTagName(`gender`)[0].childNodes[0].nodeValue;
+            const ip_address = xml.getElementsByTagName(`ip_address`)[0].childNodes[0].nodeValue;
+
+            return{
+                first_name,
+                last_name,
+                email,
+                balance,
+                ip_address
+            };
+        }
+
+        function createPeople(rdata)
+        {
+            const content = 
+                `<tr>
+                    <td>${rdata.first_name} ${rdata.last_name}</td>
+                    <td>${rdata.email}</td>
+                    <td>${rdata.balance}</td>
+                    <td>${rdata.ip_address}</td>
+                </tr>`;  
+                return stringToNode(content);
+        }
+
+        function displayData(xmlDoc) {
+            const people = xmlDoc.getElementsByTagName(`data`);
+
+            const table = document.getElementById(`people`);
+
+            for (let index = 0; index < people.length; index++)
+            {
+                const element = people[index];
+                const peopleRecord = parsePeople(element);
+                const peopleElement = createPeople(peopleRecord);
+                table.appendChild(peopleElement);
+            }  
+        } 
+    </script>
+</body>
+</html>

@@ -2,11 +2,12 @@
 <html>
   <body>
     <p id="text"></p>
+    <p id="text1"></p>
 
     <script>
       const xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
+        if (this.readyState === 4 && this.status === 200) {
           displayData(this);
         }
       };
@@ -17,6 +18,9 @@
         const xmlDoc = xml.responseXML;
         document.getElementById("text").innerHTML =
           xmlDoc.getElementsByTagName("name")[0].childNodes[0].nodeValue;
+
+        document.getElementById("text1").innerHTML =
+          xmlDoc.getElementsByTagName("name")[0].attributes[0].nodeValue;
       }
     </script>
   </body>
