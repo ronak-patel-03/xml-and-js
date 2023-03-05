@@ -1,0 +1,26 @@
+<!ELEMENT UniversitiesData (University+)>
+<!ELEMENT University (name, address+, courses+, students+, faculty+)>
+<!ELEMENT name (#PCDATA)>
+
+<!-- Common attributes -->
+<!ELEMENT id (#PCDATA)>
+<!ELEMENT firstName (#PCDATA)>
+<!ELEMENT lastName (#PCDATA)>
+<!ELEMENT email (#PCDATA)>
+
+<!ELEMENT address (streetAddress, city, region, country, zipCode)>
+<!ELEMENT streetAddress (#PCDATA)>
+<!ELEMENT city (#PCDATA)>
+<!ELEMENT region (#PCDATA)>
+<!ELEMENT country (#PCDATA)>
+<!ELEMENT zipCode (#PCDATA)>
+
+<!ELEMENT courses (id, title, description)+>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+
+<!ELEMENT students (id, firstName, lastName, dob, email)>
+<!ELEMENT dob (#PCDATA)>
+
+<!ELEMENT faculty (id, firstName, lastName, email, phoneNumber)>
+<!ELEMENT phoneNumber (#PCDATA)>
