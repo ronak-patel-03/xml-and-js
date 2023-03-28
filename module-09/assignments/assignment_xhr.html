@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <style>
+            table{
+                border: 2px solid;
+                background-color: antiquewhite;
+            }
+            tr,td{
+                border: 1px solid;
+                padding: 8px;
+            }
+
+        </style>
+    </head>
+    <body>
+    <table id="cust" border="2">
+        <tr>
+            <td>Customer Id</td>
+            <td>Full Name</td>
+            <td>Address</td>
+            <td>Phone</td>
+            <td>Email</td>
+            <td>Order</td>
+            <td>Items</td>
+        </tr>
+    </table>
+    <script>
+        const xhr = (url, method = `GET`) =>
+        new Promise((resolve) => {
+        const xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+        resolve(this.responseXML);
+        }
+        };
+        xhttp.open(method, url);
+        xhttp.send();
+    });
+
+        function stringToNode(html)
+        {
+            const template = document.createElement(`template`);
+            html = html.trim();
+            template.innerHTML = html;
+            return template.content.firstChild;
+        }
+
+        function createCustomer(customer)
+        {
+        const content = `<tr>
+            <td>${customer.id}</td>
+            <td>${customer.title} ${customer.name}</td>
+            <td>${customer.address}</td>
+            <td>${customer.phone}</td>
+            <td>${customer.email}</td>
+            <td>
+                <ul>
+                    <li>OrderID: ${customer.orderID}</li>
+                    <li>OrderBy: ${customer.orderBy}</li>
+                    <li>OrderDate: ${customer.orderDate}</li>
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    <li>Item price: ${customer.itemPrice}</li>
+                    <li>Item quamtity: ${customer.itemQty}</li>
+                </ul>
+            </td> 
+        </tr>`;
+
+        return stringToNode(content);
+        }
+
+        function parseCustomer(xml)
+        {
+            const id =
+            xml.getAttribute(`custID`)
+            const title =
+            xml.getElementsByTagName(`name`)[0].getAttribute("title");
+            const name =
+            xml.getElementsByTagName(`name`)[0].childNodes[0].nodeValue;
+            const address =
+            xml.getElementsByTagName(`address`)[0].childNodes[0].nodeValue;
+            const phone =
+            xml.getElementsByTagName(`phone`)[0].childNodes[0].nodeValue;
+            if(xml.getElementsByTagName(`email`)[0]){
+                var email =
+                    xml.getElementsByTagName(`email`)[0].childNodes[0].nodeValue;
+            }else{
+                var email=""
+            }
+            const orderID =
+            xml.getElementsByTagName(`order`)[0].attributes[0].nodeValue;
+            const orderBy =
+            xml.getElementsByTagName(`order`)[0].attributes[1].nodeValue;
+            const orderDate =
+            xml.getElementsByTagName(`orderDate`)[0].childNodes[0].nodeValue;
+            const itemPrice =
+            xml.getElementsByTagName(`itemPrice`)[0].childNodes[0].nodeValue;
+            const itemQty =
+            xml.getElementsByTagName(`itemQty`)[0].childNodes[0].nodeValue;
+
+
+            return {
+            id,
+            title,
+            name,
+            address,
+            phone,
+            email,
+            orderID,
+            orderBy,
+            orderDate,
+            itemPrice,
+            itemQty
+            };
+        }
+
+        function displayData(xmlDoc) {
+
+        const customers = xmlDoc.getElementsByTagName(`customer`);
+        const table = document.getElementById(`cust`);
+
+        for (let index = 0; index < customers.length; index++) 
+        {
+            const element = customers[index];
+            const parseCustomers = parseCustomer(element);
+            const customerElement = createCustomer(parseCustomers);
+            table.appendChild(customerElement);
+        }
+        }
+        xhr("./customers_assignment.xml").then(displayData);
+    </script>
+    </body>
+</html>
